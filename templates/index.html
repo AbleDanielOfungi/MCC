@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local League Table</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>MCC League Table</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Team</th>
+                <th>MP</th>
+                <th>W</th>
+                <th>D</th>
+                <th>L</th>
+                <th>GF</th>
+                <th>GA</th>
+                <th>GD</th>
+                <th>Points</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in league_table %}
+            <tr>
+                <td>{{ row['team_name'] }}</td>
+                <td>{{ row['matches_played'] }}</td>
+                <td>{{ row['wins'] }}</td>
+                <td>{{ row['draws'] }}</td>
+                <td>{{ row['losses'] }}</td>
+                <td>{{ row['GF'] }}</td>
+                <td>{{ row['GA'] }}</td>
+                <td>{{ row['goal_difference'] }}</td>
+                <td>{{ row['points'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+        
+    <a href="{{ url_for('add_result') }}">Add Match Result</a>
+</body>
+</html>
